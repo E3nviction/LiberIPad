@@ -1,6 +1,12 @@
 # LiberIPad
 A trolling "jailbreak" for my Ipad
 
+## Installation
+To install this on your Ipad, you'll need to go into the Pyto app,  
+then navigate to the "PyPI" tab,  
+install the "gitpython" package,  
+and run the command.
+
 ## What is it?
 So, how exactly does this "jailbreak" work.  
 Well first of all we shouln't directly call it a "jailbreak",  
