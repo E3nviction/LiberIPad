@@ -1,30 +1,38 @@
-import pyto_ui as ui
 import http.server
 import socketserver
 import threading
 import os
 
-# Set up the directory where the HTML and CSS files are located
-print(os.getcwd())
-os.chdir(os.getcwd() + "/jb")
+# Define the directory where the HTML and CSS files are located
+current_directory = os.getcwd()
+target_directory = os.path.join(current_directory, "jb")
 
-# Define server port
-PORT = 8000
+# Change to the target directory if it exists
+if os.path.isdir(target_directory):
+    print(f"Serving files from: {target_directory}")
+else:
+    print(f"Directory '{target_directory}' does not exist. Please check the path.")
+    exit(1)
+
+# Define the server port
+PORT = 8001
 
 # Set up and start the HTTP server in a separate thread
 Handler = http.server.SimpleHTTPRequestHandler
-httpd = socketserver.TCPServer(("", PORT), Handler)
+httpd = socketserver.TCPServer(("0.0.0.0", PORT), Handler)
 
 def start_server():
+    print(f"Serving at http://0.0.0.0:{PORT}")
     httpd.serve_forever()
 
-# Start server in a background thread
+# Start the server in a background thread
 server_thread = threading.Thread(target=start_server, daemon=True)
 server_thread.start()
 
-# Initialize WebView and load the URL from the HTTP server
-web_view = ui.WebView()
-web_view.load_url(f"http://localhost:{PORT}/index.html")
-
-# Display the WebView in fullscreen mode
-ui.show_view(web_view, mode=ui.PRESENTATION_MODE_FULLSCREEN)
+# Keep the main thread alive to keep the server running
+try:
+    while True:
+        pass
+except KeyboardInterrupt:
+    print("\nShutting down server.")
+    httpd.shutdown()
