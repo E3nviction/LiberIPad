@@ -1,10 +1,11 @@
+import pyto_ui as ui
 import http.server
 import socketserver
 import threading
 import os
 
 # Define the server port
-PORT = 8000
+PORT = 8001
 
 # Set up and start the HTTP server in a separate thread
 Handler = http.server.SimpleHTTPRequestHandler
@@ -18,10 +19,9 @@ def start_server():
 server_thread = threading.Thread(target=start_server, daemon=True)
 server_thread.start()
 
-# Keep the main thread alive to keep the server running
-try:
-    while True:
-        pass
-except KeyboardInterrupt:
-    print("\nShutting down server.")
-    httpd.shutdown()
+# Initialize WebView and load the URL from the HTTP server
+web_view = ui.WebView()
+web_view.load_url(f"http://localhost:{PORT}/index.html")
+
+# Display the WebView in fullscreen mode
+ui.show_view(web_view, mode=ui.PRESENTATION_MODE_FULLSCREEN)
