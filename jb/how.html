@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LiberiPad • Start</title>
-    <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>LiberiPad • Wie?</title>
+	<link rel="stylesheet" href="./how.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
+
 <body>
-    <!-- Sidebar -->
-    <div class="sidebar">
+	<!-- Sidebar -->
+	<div class="sidebar">
         <img src="../assets/Logo.svg" alt="LiberiPad Logo" class="logo" width="40" height="40">
         <h2 class="nav-title">LiberiPad</h2>
         <div id="top-sidebar">
@@ -31,15 +33,57 @@
         </div>
     </div>
 
-    <!-- Hauptinhalt -->
-    <div class="content">
-        <img src="../assets/Logo.svg" alt="LiberiPad Logo" class="logo huge" width="100" height="100">
-        <h1>LiberiPad</h1>
-        <p>Das hier ist das LIP Dashboard!</p>
-        <p>Hier hast du verschiedene Tools zur Verfügung, von Spielen bis zu Troll-Tools. Viel Spaß! 😈</p>
-    </div>
+	<!-- Main Content -->
+	<div class="content">
+		<h1>LiberIPad</h1>
+		<p>Ein trolling "Jailbreak" für dein iPad</p>
 
-    <!-- Onboarding Modal -->
+		<h2>Installation</h2>
+		<p>Um dies auf deinem iPad zu installieren, musst du die Pyto-App öffnen,<br>
+			dann zum "PyPI"-Tab navigieren,<br>
+			das "dulwich"-Paket installieren,<br>
+			und dann eine neue Datei erstellen, sie <code>install.py</code> nennen und den folgenden Code<br>
+			hineinkopieren:</p>
+		<code>
+			from dulwich import porcelain<br>
+			<br>
+			porcelain.clone("https://github.com/E3nviction/LiberIPad.git", "LIB")
+		</code>
+		<h2>Was ist das?</h2>
+		<p>Wie funktioniert dieser "Jailbreak" genau?<br>
+			Nun, zuerst sollten wir es nicht direkt einen "Jailbreak" nennen,<br>
+			es ist eher ein "Hack" (ein Trick, um Funktionen zu umgehen und auf Features zuzugreifen, auf die man<br>
+			eigentlich nicht zugreifen sollte).<br>
+			Wir entsperren das iPad also nicht wirklich oder entfernen Beschränkungen,<br>
+			wir arbeiten einfach mit den Tools, die uns zur Verfügung stehen, um das iPad<br>
+			auf eine Weise zu nutzen, wie es nicht vorgesehen war... z.B. ein Kahoot-Spiel mit Bots zu "spammen"<br>
+			mithilfe eines Skripts.<br></p>
+
+		<h2>Ok. Aber wie funktioniert es jetzt?</h2>
+		<p>Es ist eigentlich ziemlich einfach. Für die Webseite (Das Dashboard) verwenden wir ganz normales HTML, CSS<br>
+			und JavaScript, um eine Website zu erstellen.<br>
+			Aber für das Ausführen dieser HTML-Dateien verwenden wir ein Programm namens "Pyto",<br>
+			es ist ein Programm, das es uns ermöglicht, Python auf dem iPad zu verwenden,<br>
+			wir nutzen dann die pyto_ui-Bibliothek, um ein App-Fenster mit einer Web-Ansicht (einen Mini-Browser in der<br>
+			App) zu erstellen, um die HTML-Datei anzuzeigen.<br></p>
+
+		<p>Alternativ könnten wir (und haben es auch getan) den Python-HTTP-Server-Modus verwenden</p>
+		<pre><code>python -m http.server &lt;port&gt;</code></pre>
+
+		<p>Beispiel:</p>
+		<pre><code>python -m http.server 8000</code></pre>
+
+		<p>(Update: Der localhost wird jetzt doch verwendet aber + pyto_ui)</p>
+
+		<p>Dann können wir einen Webbrowser öffnen und eingeben:
+			<code>localhost:8000</code> oder <code>127.0.0.1:8000</code>
+		</p>
+
+		<p>Und um den "Jailbreak" von meinem Computer aus zu aktualisieren, verwenden wir das dulwich PyPI-Paket, um auf
+			Git zuzugreifen.</p>
+	</div>
+
+	<!-- Onboarding Modal -->
     <div id="onboardingModal" class="modal" style="display: none;">
         <div class="modal-content">
             <div id="onboardingPage1" class="onboarding-page">
@@ -95,4 +139,5 @@
         }
     </script>
 </body>
+
 </html>

@@ -7,9 +7,9 @@ dann zum "PyPI"-Tab navigieren,
 das "dulwich"-Paket installieren,  
 und dann eine neue Datei erstellen, sie `install.py` nennen und den folgenden Code hineinkopieren:  
 ```python
-import dulwich
+from dulwich import porcelain
 
-dulwich.porcelain.clone("https://github.com/E3nviction/LiberIPad.git", "LIB")
+porcelain.clone("https://github.com/E3nviction/LiberIPad.git", "LIB")
 ```
 
 
@@ -36,6 +36,8 @@ Beispiel:
 ``` python
 python -m http.server 8000
 ```
+
+(Update: Der localhost wird jetzt doch verwendet aber + pyto_ui)
 
 Dann können wir einen Webbrowser öffnen und eingeben:  
 `localhost:8000 oder 127.0.0.1:8000`

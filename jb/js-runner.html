@@ -1,49 +1,124 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>J Runner</title>
-    <link rel="stylesheet" href="style.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>LiberiPad • Scripts</title>
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
+
 <body>
-    <!-- Sidebar -->
-    <div class="sidebar">
-		<img src="../assets/Logo.svg" alt="LiberiPad Logo" class="logo" width="40" height="40">
-        <h2 class="nav-title">Navigation</h2>
-        <ul>
-            <li><a href="index.html">Startseite</a></li>
-            <li><a href="js-runner.html">JavaScript Runner</a></li>
-        </ul>
-    </div>
-
-    <!-- Main Content -->
-    <div class="content">
-        <h1>JavaScript Runner</h1>
-        <p>Hier kannst du verschiedene Skripte ausführen.</p>
-
-        <!-- Script Cards -->
-        <h1>Troll tools</h1>
-        <div class="script-cards">
-            <!-- Kahoot Split-Screen Card -->
-            <div class="card">
-                <h2>Kahoot Split-Screen</h2>
-                <p>Öffnet zwei Kahoot-Websites nebeneinander.</p>
-                <a href="scripts/kahoot-split.html" class="open-button">Öffnen</a>
-            </div>
-            <h1>Cheat tools</h1>
-            <div class="card">
-                <h2>Calculator</h2>
-                <p>Ein taschenrechner.</p>
-                <a href="scripts/calc.html" class="open-button">Öffnen</a>
-            </div>
-            <h1>Games</h1>
-            <div class="card">
-                <h2>Tic Tac Toe</h2>
-                <p>Tic Tac Toe spiel.</p>
-                <a href="scripts/tictactoe.html" class="open-button">Öffnen</a>
-            </div>
+	<!-- Sidebar -->
+	<div class="sidebar">
+        <img src="../assets/Logo.svg" alt="LiberiPad Logo" class="logo" width="40" height="40">
+        <h2 class="nav-title">LiberiPad</h2>
+        <div id="top-sidebar">
+            <ul>
+                <li><a href="index.html"><i class="fa fa-home"></i> Startseite</a></li>
+                <li><a href="js-runner.html"><i class="fa fa-terminal"></i> Skripte</a></li>
+                <li><a href="#" id="onboardingButton"><i class="fa fa-info-circle"></i> Einführung</a></li>
+            </ul>
+        </div>
+        <div id="bottom-sidebar">
+            <ul>
+                <li><a href="how.html"><i class="fa fa-book"></i> Anleitung</a></li>
+                <li><a href="https://discord.gg/kgKwVC7tXd"><i class="fa-brands fa-discord"></i> Unser Discord</a></li>
+            </ul>
+        </div>
+        <div class="info">
+            <p>0.1.0</p>
+            <p>© LIP • Jonas Schmidt</p>
         </div>
     </div>
+
+	<!-- Main Content -->
+	<div class="content">
+		<h1>Scripts</h1>
+		<p>Hier kannst du verschiedene Skripte ausführen.</p>
+
+		<!-- Script Cards -->
+		<div class="script-cards">
+			<!-- Kahoot Split-Screen Card -->
+			<h3>Troll tools</h3>
+			<div class="card">
+				<h2>Kahoot Split-Screen</h2>
+				<p>Öffnet zwei Kahoot-Websites nebeneinander.</p>
+				<a href="scripts/kahoot-split.html" class="open-button">Öffnen</a>
+			</div>
+			<h3>Cheat tools</h3>
+			<div class="card">
+				<h2>Calculator</h2>
+				<p>Ein taschenrechner.</p>
+				<a href="scripts/calc.html" class="open-button">Öffnen</a>
+			</div>
+			<h3>Games</h3>
+			<div class="card">
+				<h2>Tic Tac Toe</h2>
+				<p>Tic Tac Toe spiel.</p>
+				<a href="scripts/tictactoe.html" class="open-button">Öffnen</a>
+			</div>
+		</div>
+	</div>
+
+	<!-- Onboarding Modal -->
+	<div id="onboardingModal" class="modal" style="display: none;">
+		<div class="modal-content">
+			<div id="onboardingPage1" class="onboarding-page">
+				<h2>Willkommen bei LiberiPad!</h2>
+				<p>Willkommen beim onboarding von LIP. Lass uns ein paar Tipps durchgehen, um dir den Einstieg zu
+					erleichtern.</p>
+			</div>
+			<div id="onboardingPage2" class="onboarding-page" style="display: none;">
+				<h2>Scripts-Bereich</h2>
+				<p>Du findest alle Skripte, die du ausführen kannst, im „Skripte“-Bereich des Menüs auf der linken
+					Seite.</p>
+			</div>
+			<div class="modal-navigation">
+				<button id="backButton" style="display: none;">Zurück</button>
+				<button id="nextButton">Weiter</button>
+				<button id="closeModal" style="display: none;">Verstanden!</button>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		let currentPage = 1;
+
+		// Funktion, um das Onboarding-Modal anzuzeigen
+		document.getElementById('onboardingButton').addEventListener('click', () => {
+			document.getElementById('onboardingModal').style.display = 'flex';
+			showPage(1);
+		});
+
+		// Funktion zum Schließen des Modals
+		document.getElementById('closeModal').addEventListener('click', () => {
+			document.getElementById('onboardingModal').style.display = 'none';
+		});
+
+		// Navigation zwischen den Seiten
+		document.getElementById('nextButton').addEventListener('click', () => {
+			currentPage++;
+			showPage(currentPage);
+		});
+
+		document.getElementById('backButton').addEventListener('click', () => {
+			currentPage--;
+			showPage(currentPage);
+		});
+
+		function showPage(page) {
+			// Alle Seiten verstecken
+			document.querySelectorAll('.onboarding-page').forEach(page => page.style.display = 'none');
+			document.getElementById(`onboardingPage${page}`).style.display = 'block';
+
+			// Navigations-Buttons steuern
+			document.getElementById('backButton').style.display = page === 1 ? 'none' : 'inline-block';
+			document.getElementById('nextButton').style.display = page === 2 ? 'none' : 'inline-block';
+			document.getElementById('closeModal').style.display = page === 2 ? 'inline-block' : 'none';
+		}
+	</script>
 </body>
+
 </html>
