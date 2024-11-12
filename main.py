@@ -1,11 +1,12 @@
 import pyto_ui as ui
+import pathlib
 import http.server
 import socketserver
 import threading
 import os
 
 # Set up the directory where the HTML and CSS files are located
-os.chdir("./jb/")
+os.chdir(pathlib.Path.joinpath(os.getcwd(), "/jb"))
 
 # Define server port
 PORT = 8000
