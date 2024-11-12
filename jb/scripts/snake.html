@@ -42,6 +42,10 @@
             cursor: pointer;
             transition: background-color 0.3s;
         }
+		.controls+.control-button {
+			margin-top: 10px;
+			width: 60px;
+		}
 
         .control-button:active {
             background-color: #ff7777;
@@ -55,11 +59,11 @@
 
     <!-- Control Buttons -->
     <div class="controls">
-        <button class="control-button" onclick="changeDirection('up')">↑</button>
         <button class="control-button" onclick="changeDirection('left')">←</button>
-        <button class="control-button" onclick="changeDirection('down')">↓</button>
+        <button class="control-button" onclick="changeDirection('up')">↑</button>
         <button class="control-button" onclick="changeDirection('right')">→</button>
     </div>
+	<button class="control-button" onclick="changeDirection('down')">↓</button>
 
     <script>
         // Game Variables
@@ -131,7 +135,7 @@
             if (newDirection === 'down' && direction !== 'up') direction = 'down';
         }
 
-        setInterval(drawGame, 100); // Game loop
+        setInterval(drawGame, 250); // Game loop
     </script>
 </body>
 </html>
