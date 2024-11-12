@@ -1,0 +1,134 @@
+/* General Styling */
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #000;
+    color: #ff5555;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+/* Back Button */
+.back-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #ff5555;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: #ff7777;
+}
+
+/* Game Container */
+.game-container {
+    width: auto;
+    margin-top: 20px;
+    background-color: #1a1a1a;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(255, 85, 85, 0.8);
+}
+
+/* Board Styling */
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 0fr);
+    gap: 5px;
+    margin: 20px 20px;
+}
+
+.cell {
+    width: 100px;
+    height: 100px;
+    background-color: #333;
+    font: monospace;
+    font-size: 2.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    transition: transform 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.cell.marked {
+    cursor: default;
+}
+
+/* X and O Color Styling */
+.cell.x-animation {
+    color: #ff5555;
+    animation: xMark 0.3s ease forwards;
+}
+
+.cell.o-animation {
+    color: #5555ff;
+    animation: oMark 0.3s ease forwards;
+}
+
+@keyframes xMark {
+    from { transform: scale(0.5); color: #fff; }
+    to { transform: scale(1); color: #ff5555; }
+}
+
+@keyframes oMark {
+    from { transform: scale(0.5); color: #fff; }
+    to { transform: scale(1); color: #5555ff; }
+}
+
+/* Reset Button */
+.reset-button {
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #ff5555;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.reset-button:hover {
+    background-color: #ff7777;
+}
+
+/* Modal Styling */
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #1a1a1a;
+    color: #ff5555;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #ff5555cc;
+    text-align: center;
+    display: none;
+    z-index: 1000;
+}
+
+.modal.active {
+    display: block;
+}
+
+.modal button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #ff5555;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.modal button:hover {
+    background-color: #ff7777;
+}

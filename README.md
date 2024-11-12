@@ -1,36 +1,43 @@
 # LiberIPad
-A trolling "jailbreak" for my Ipad
+Ein trolling "Jailbreak" für dein iPad
 
 ## Installation
-To install this on your Ipad, you'll need to go into the Pyto app,  
-then navigate to the "PyPI" tab,  
-install the "gitpython" package,  
-and run the command.
+Um dies auf deinem iPad zu installieren, musst du die Pyto-App öffnen,  
+dann zum "PyPI"-Tab navigieren,  
+das "dulwich"-Paket installieren,  
+und dann eine neue Datei erstellen, sie `install.py` nennen und den folgenden Code hineinkopieren:  
+```python
+import dulwich
 
-## What is it?
-So, how exactly does this "jailbreak" work.  
-Well first of all we shouln't directly call it a "jailbreak",  
-it's more of a "hack" (a trick to bypass and access features that you weren't meant to access).  
-We aren't actually unlocking the Ipad or removing restrictions,  
-we're just working with the tools we have, to be able to use the Ipad  
-in ways we weren't supposed to... e.g. being able to "spam" a kahoot game full with bots using a script.  
+dulwich.porcelain.clone("https://github.com/E3nviction/LiberIPad.git", "LIB")
+```
 
-## Ok. But now how does it work?
-It's actually quite simple, for the webpage (The Dashboard) we just use normal html, css, and javascript to create a website  
-But for the Running of these html files, we use a program called "Pyto" it's a program that allows us to use python on the Ipad,  
-we then use the pyto_ui library to create an app window with a web view (a mini-browser in the app) to display the html file.  
 
-Alternatively we could (and did) use the python http server mod  
+## Was ist das?
+Wie funktioniert dieser "Jailbreak" genau?  
+Nun, zuerst sollten wir es nicht direkt einen "Jailbreak" nennen,  
+es ist eher ein "Hack" (ein Trick, um Funktionen zu umgehen und auf Features zuzugreifen, auf die man eigentlich nicht zugreifen sollte).  
+Wir entsperren das iPad also nicht wirklich oder entfernen Beschränkungen,  
+wir arbeiten einfach mit den Tools, die uns zur Verfügung stehen, um das iPad  
+auf eine Weise zu nutzen, wie es nicht vorgesehen war... z.B. ein Kahoot-Spiel mit Bots zu "spammen" mithilfe eines Skripts.
+
+## Ok. Aber wie funktioniert es jetzt?
+Es ist eigentlich ziemlich einfach. Für die Webseite (Das Dashboard) verwenden wir ganz normales HTML, CSS und JavaScript, um eine Website zu erstellen.  
+Aber für das Ausführen dieser HTML-Dateien verwenden wir ein Programm namens "Pyto",  
+es ist ein Programm, das es uns ermöglicht, Python auf dem iPad zu verwenden,  
+wir nutzen dann die pyto_ui-Bibliothek, um ein App-Fenster mit einer Web-Ansicht (einen Mini-Browser in der App) zu erstellen, um die HTML-Datei anzuzeigen.
+
+Alternativ könnten wir (und haben es auch getan) den Python-HTTP-Server-Modus verwenden  
 ``` python
 python -m http.server <port>
 ```
 
-example:
+Beispiel:
 ``` python
 python -m http.server 8000
 ```
 
-then we can go onto a web browser and type:  
-`localhost:8000 or 127.0.0.1:8000`
+Dann können wir einen Webbrowser öffnen und eingeben:  
+`localhost:8000 oder 127.0.0.1:8000`
 
-And to update the "Jailbreak" from my computer we use gitpython PyPI pip package to access git
+Und um den "Jailbreak" von meinem computer aus zu aktualisieren, verwenden wir das dulwich PyPI-Paket, um auf Git zuzugreifen.

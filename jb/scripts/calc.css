@@ -1,0 +1,76 @@
+/* General Styling */
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #000;
+    color: #ff5555;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
+
+/* Back Button */
+.back-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #ff5555;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: #ff7777;
+}
+
+/* Calculator Container */
+.calculator-container {
+    margin-top: 20px;
+    width: 500px;
+    background-color: #222;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 85, 85, 0.6);
+}
+
+/* Display Styling */
+.display {
+    width: 100%;
+    font-size: 2em;
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px solid #ff7777;
+    text-align: right;
+    background-color: #000;
+    color: #ff5555;
+    margin-bottom: 15px;
+    outline: none;
+}
+
+/* Button Styling */
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+button {
+    font-size: 1.2em;
+    padding: 20px;
+    background-color: #333;
+    color: #ff5555;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+button:hover {
+    background-color: #444;
+}
+
+button:active {
+    background-color: #555;
+}

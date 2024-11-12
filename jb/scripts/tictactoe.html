@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="tictactoe.css">
+</head>
+<body>
+    <!-- Back Button -->
+    <a href="../js-runner.html" class="back-button">Zurück</a>
+
+    <!-- Tic Tac Toe Container -->
+    <div class="game-container">
+        <h1>Tic Tac Toe</h1>
+        <div class="board" id="board">
+            <!-- 9 cells for Tic Tac Toe -->
+            <div class="cell" onclick="makeMove(this, 0)"></div>
+            <div class="cell" onclick="makeMove(this, 1)"></div>
+            <div class="cell" onclick="makeMove(this, 2)"></div>
+            <div class="cell" onclick="makeMove(this, 3)"></div>
+            <div class="cell" onclick="makeMove(this, 4)"></div>
+            <div class="cell" onclick="makeMove(this, 5)"></div>
+            <div class="cell" onclick="makeMove(this, 6)"></div>
+            <div class="cell" onclick="makeMove(this, 7)"></div>
+            <div class="cell" onclick="makeMove(this, 8)"></div>
+        </div>
+        <button onclick="resetGame()" class="reset-button">Reset</button>
+    </div>
+
+    <!-- Modal for Win/Draw -->
+    <div id="modal" class="modal">
+        <p id="modalMessage"></p>
+        <button onclick="closeModal()">OK</button>
+    </div>
+
+    <script>
+        const board = Array(9).fill(null);
+        let currentPlayer = "X";
+        let gameActive = true;
+
+        function makeMove(cell, index) {
+            if (!gameActive || board[index] !== null) return;
+
+            board[index] = currentPlayer;
+            cell.classList.add("marked");
+            cell.innerText = currentPlayer;
+            cell.classList.add(currentPlayer === "X" ? "x-animation" : "o-animation");
+
+            if (checkWin()) {
+                showModal(currentPlayer + " gewinnt!");
+                gameActive = false;
+                return;
+            }
+
+            if (board.every(cell => cell !== null)) {
+                showModal("Unentschieden!");
+                gameActive = false;
+                return;
+            }
+
+            currentPlayer = currentPlayer === "X" ? "O" : "X";
+        }
+
+        function checkWin() {
+            const winPatterns = [
+                [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
+                [0, 3, 6], [1, 4, 7], [2, 5, 8], // Columns
+                [0, 4, 8], [2, 4, 6]            // Diagonals
+            ];
+            return winPatterns.some(pattern =>
+                pattern.every(index => board[index] === currentPlayer)
+            );
+        }
+
+        function resetGame() {
+            board.fill(null);
+            document.querySelectorAll(".cell").forEach(cell => {
+                cell.innerText = "";
+                cell.classList.remove("marked", "x-animation", "o-animation");
+            });
+            currentPlayer = "X";
+            gameActive = true;
+        }
+
+        function showModal(message) {
+            const modal = document.getElementById("modal");
+            document.getElementById("modalMessage").innerText = message;
+            modal.classList.add("active");
+        }
+
+        function closeModal() {
+            const modal = document.getElementById("modal");
+            modal.classList.remove("active");
+        }
+    </script>
+</body>
+</html>
