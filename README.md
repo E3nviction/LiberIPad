@@ -11,6 +11,8 @@ from dulwich import porcelain
 
 porcelain.clone("https://github.com/E3nviction/LiberIPad.git", "LIB")
 ```
+Danach einfach die main.py datei laufen lassen und browser öffnen,
+dann zu 127.0.0.1:8000 gehen oder zu 0.0.0.0:8000
 
 
 ## Was ist das?
